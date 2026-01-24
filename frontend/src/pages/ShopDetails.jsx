@@ -180,15 +180,15 @@ const addToFavourite = async () => {
 
   /* ---------------- DIRECTIONS ---------------- */
   const openDirections = () => {
-    if (!userLocation || !shop?.location?.coordinates) return;
+  if (!userLocation || !shop?.location?.coordinates) return;
 
-    const [lng, lat] = shop.location.coordinates;
+  const [lng, lat] = shop.location.coordinates;
 
-    window.open(
-      `https://www.google.com/maps/dir/?api=1&origin=${userLocation.lat},${userLocation.lng}&destination=${lat},${lng}`,
-      "_blank"
-    );
-  };
+  const url = `https://www.google.com/maps/dir/?api=1&origin=${userLocation.lat},${userLocation.lng}&destination=${lat},${lng}`;
+
+  window.location.href = url;
+};
+
 
   if (loading) return <p className="p-6">Loading...</p>;
   if (!shop) return <p className="p-6">Shop not found</p>;
