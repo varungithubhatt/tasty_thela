@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+/* =========================
+   THEME VARIABLES (GLOBAL)
+   ========================= */
+@theme {
+  --color-primary: #ff6b35;     /* street food orange */
+  --color-secondary: #1f2937;   /* dark gray */
+  --color-accent: #22c55e;      /* green */
+  --color-bg: #ffffff;
+  --color-text: #111827;
+}
+
+/* OPTIONAL DARK THEME */
+.dark {
+  --color-primary: #ff7849;
+  --color-secondary: #e5e7eb;
+  --color-accent: #4ade80;
+  --color-bg: #111827;
+  --color-text: #f9fafb;
+}
