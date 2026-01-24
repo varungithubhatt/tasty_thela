@@ -88,7 +88,8 @@ export default function MyShopPage() {
     <>
       <AppNavbar />
 
-      <div className="bg-orange-50 min-h-screen pt-24 px-4">
+      <div className="pb-28 ">
+
         <main className="max-w-4xl mx-auto">
 
           
