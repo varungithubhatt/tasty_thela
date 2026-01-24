@@ -25,7 +25,7 @@ export default function Navbar() {
             text-[color:var(--color-primary)]
           "
         >
-          Tasty Thela 🍔
+          Tasty Thela <img src="/thela_image-removebg-preview (1).png" alt="logo" className="inline w-8 h-8 ml-1 -mt-1"/>
         </Link>
 
         {/* RIGHT: LINKS + LOGIN */}

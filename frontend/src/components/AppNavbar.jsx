@@ -18,7 +18,7 @@ export default function AppNavbar() {
       <aside className="hidden md:flex fixed top-0 left-0 h-screen w-64 bg-white border-r px-6 py-8">
         <div className="flex flex-col gap-8 w-full">
           <h1 className="text-2xl font-extrabold text-orange-500">
-            🍜 Tasty_Thela
+            <img src="/thela_image-removebg-preview (1).png" alt="logo" className="inline w-8 h-8 ml-1 -mt-1"/> Tasty_Thela
           </h1>
 
           <nav className="flex flex-col gap-2">
