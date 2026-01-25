@@ -229,170 +229,255 @@ export default function EditShopPage() {
 
   /* ================= UI ================= */
   return (
-    <>
-      <AppNavbar />
+  <>
+    <AppNavbar />
 
-      <div className="bg-orange-50 min-h-screen pt-24 px-4">
-        <div className="max-w-3xl mx-auto bg-white rounded-2xl shadow p-6">
+    <div className="bg-orange-50 min-h-screen pt-24 pb-28 px-4">
+      <div className="max-w-3xl mx-auto bg-white rounded-2xl shadow p-6">
 
-          <h2 className="text-2xl font-bold text-orange-600 mb-6">
-            Edit Your Shop
-          </h2>
+        <h2 className="text-2xl font-bold text-orange-600 mb-6">
+          Edit Your Shop
+        </h2>
 
-          <form onSubmit={handleSubmit} className="space-y-6">
+        <form onSubmit={handleSubmit} className="space-y-6">
 
-            <input className="w-full border px-4 py-2 rounded"
-              value={shopName}
-              onChange={e => setShopName(e.target.value)}
-              required
-            />
+          <input
+            className="w-full border px-4 py-2 rounded"
+            value={shopName}
+            onChange={e => setShopName(e.target.value)}
+            required
+          />
 
-            <textarea className="w-full border px-4 py-2 rounded"
-              value={description}
-              onChange={e => setDescription(e.target.value)}
-            />
+          <textarea
+            className="w-full border px-4 py-2 rounded"
+            value={description}
+            onChange={e => setDescription(e.target.value)}
+          />
 
-            <input className="w-full border px-4 py-2 rounded"
-              value={famousFoods}
-              onChange={e => setFamousFoods(e.target.value)}
-            />
+          <input
+            className="w-full border px-4 py-2 rounded"
+            value={famousFoods}
+            onChange={e => setFamousFoods(e.target.value)}
+          />
 
-            {/* MENU */}
-            <div>
-              <h3 className="font-semibold mb-2">Menu</h3>
-              {menu.map((m, i) => (
-                <div key={i} className="flex gap-2 mb-2">
-                  <input className="flex-1 border px-2 py-1 rounded"
-                    value={m.item}
-                    onChange={e => updateMenu(i,"item",e.target.value)}
-                  />
-                  <input type="number" className="w-24 border px-2 py-1 rounded"
+          {/* MENU */}
+          <div>
+            <h3 className="font-semibold mb-2">Menu</h3>
+            {menu.map((m, i) => (
+              <div key={i} className="flex flex-col sm:flex-row gap-2 mb-2">
+                <input
+                  className="flex-1 border px-2 py-2 rounded"
+                  value={m.item}
+                  onChange={e => updateMenu(i, "item", e.target.value)}
+                  placeholder="Item name"
+                />
+
+                <div className="flex gap-2">
+                  <input
+                    type="number"
+                    className="w-full sm:w-24 border px-2 py-2 rounded"
                     value={m.price}
-                    onChange={e => updateMenu(i,"price",e.target.value)}
+                    onChange={e => updateMenu(i, "price", e.target.value)}
+                    placeholder="₹"
                   />
+
                   {menu.length > 1 && (
-                    <button type="button" onClick={() => removeMenuItem(i)}>✕</button>
-                  )}
-                </div>
-              ))}
-              <button type="button" onClick={addMenuItem}
-                className="text-orange-600 text-sm">+ Add item</button>
-            </div>
-
-            {/* TIMINGS */}
-            <div>
-              <h3 className="font-semibold mb-2">Opening Timings</h3>
-
-              {timeGroups.map((g, gi) => (
-                <div key={gi} className="border rounded-lg p-3 mb-4 relative">
-                  {gi !== 0 && (
-                    <button type="button"
-                      onClick={() => removeTimeGroup(gi)}
-                      className="absolute top-2 right-2 text-red-500">
+                    <button
+                      type="button"
+                      onClick={() => removeMenuItem(i)}
+                      className="px-3 text-red-500 font-bold"
+                    >
                       ✕
                     </button>
                   )}
+                </div>
+              </div>
+            ))}
+            <button
+              type="button"
+              onClick={addMenuItem}
+              className="text-orange-600 text-sm"
+            >
+              + Add item
+            </button>
+          </div>
 
-                  <div className="flex flex-wrap gap-2 mb-3">
-                    {DAYS.map(day => (
-                      <button key={day} type="button"
-                        onClick={() => toggleDay(gi, day)}
-                        className={`px-3 py-1 border rounded text-sm
-                          ${g.days.includes(day) ? "bg-orange-500 text-white" : ""}`}>
-                        {day}
-                      </button>
-                    ))}
-                  </div>
+          {/* TIMINGS */}
+          <div>
+            <h3 className="font-semibold mb-2">Opening Timings</h3>
 
-                  {g.slots.map((s, si) => (
-                    <div key={si} className="flex gap-2 mb-2">
-                      <input type="time" value={s.open}
-                        onChange={e => updateSlot(gi,si,"open",e.target.value)}
-                        className="border px-2 py-1 rounded" />
-                      <input type="time" value={s.close}
-                        onChange={e => updateSlot(gi,si,"close",e.target.value)}
-                        className="border px-2 py-1 rounded" />
-                      {g.slots.length > 1 && (
-                        <button type="button"
-                          onClick={() => removeSlot(gi, si)}
-                          className="text-red-500">✕</button>
-                      )}
-                    </div>
+            {timeGroups.map((g, gi) => (
+              <div key={gi} className="border rounded-lg p-3 mb-4 relative">
+                {gi !== 0 && (
+                  <button
+                    type="button"
+                    onClick={() => removeTimeGroup(gi)}
+                    className="absolute top-2 right-2 text-red-500"
+                  >
+                    ✕
+                  </button>
+                )}
+
+                <div className="flex flex-wrap gap-2 mb-3">
+                  {DAYS.map(day => (
+                    <button
+                      key={day}
+                      type="button"
+                      onClick={() => toggleDay(gi, day)}
+                      className={`px-3 py-1 border rounded text-sm
+                        ${g.days.includes(day)
+                          ? "bg-orange-500 text-white"
+                          : ""
+                        }`}
+                    >
+                      {day}
+                    </button>
                   ))}
+                </div>
 
-                  <button type="button"
-                    onClick={() => addSlot(gi)}
-                    className="text-orange-600 text-sm">
-                    + Add time slot
+                {g.slots.map((s, si) => (
+                  <div
+                    key={si}
+                    className="flex flex-col sm:flex-row gap-2 mb-2"
+                  >
+                    <input
+                      type="time"
+                      value={s.open}
+                      onChange={e =>
+                        updateSlot(gi, si, "open", e.target.value)
+                      }
+                      className="border px-2 py-2 rounded w-full"
+                    />
+
+                    <input
+                      type="time"
+                      value={s.close}
+                      onChange={e =>
+                        updateSlot(gi, si, "close", e.target.value)
+                      }
+                      className="border px-2 py-2 rounded w-full"
+                    />
+
+                    {g.slots.length > 1 && (
+                      <button
+                        type="button"
+                        onClick={() => removeSlot(gi, si)}
+                        className="text-red-500 font-bold self-start sm:self-center"
+                      >
+                        ✕
+                      </button>
+                    )}
+                  </div>
+                ))}
+
+                <button
+                  type="button"
+                  onClick={() => addSlot(gi)}
+                  className="text-orange-600 text-sm"
+                >
+                  + Add time slot
+                </button>
+              </div>
+            ))}
+
+            <button
+              type="button"
+              onClick={addTimeGroup}
+              className="text-orange-600 text-sm"
+            >
+              + Add timing group
+            </button>
+          </div>
+
+          {/* IMAGES */}
+          <div>
+            <h3 className="font-semibold mb-2">Shop Images</h3>
+            <div className="flex flex-wrap gap-2 mb-2">
+              {existingImages.map((url, i) => (
+                <div key={i} className="relative">
+                  <img
+                    src={url}
+                    className="w-16 h-16 rounded object-cover"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => removeExistingImage(i)}
+                    className="absolute -top-2 -right-2 bg-red-500 text-white w-5 h-5 rounded-full text-xs"
+                  >
+                    ✕
                   </button>
                 </div>
               ))}
-
-              <button type="button"
-                onClick={addTimeGroup}
-                className="text-orange-600 text-sm">
-                + Add timing group
-              </button>
-            </div>
-
-            {/* IMAGES */}
-            <div>
-              <h3 className="font-semibold mb-2">Shop Images</h3>
-              <div className="flex flex-wrap gap-2 mb-2">
-                {existingImages.map((url,i)=>(
-                  <div key={i} className="relative">
-                    <img src={url} className="w-16 h-16 rounded object-cover"/>
-                    <button type="button"
-                      onClick={()=>removeExistingImage(i)}
-                      className="absolute -top-2 -right-2 bg-red-500 text-white w-5 h-5 rounded-full text-xs">✕</button>
-                  </div>
-                ))}
-                {newImages.map((img,i)=>(
-                  <div key={i} className="relative">
-                    <img src={URL.createObjectURL(img)} className="w-16 h-16 rounded object-cover"/>
-                    <button type="button"
-                      onClick={()=>removeNewImage(i)}
-                      className="absolute -top-2 -right-2 bg-red-500 text-white w-5 h-5 rounded-full text-xs">✕</button>
-                  </div>
-                ))}
-              </div>
-
-              <input type="file" multiple accept="image/*"
-                onChange={e => handleNewImages([...e.target.files])}/>
-            </div>
-
-            {/* VIDEOS */}
-            <div>
-              <h3 className="font-semibold mb-2">Shop Videos (optional)</h3>
-              {existingVideos.map((_,i)=>(
-                <div key={i} className="flex justify-between text-sm mb-1">
-                  Existing video {i+1}
-                  <button type="button"
-                    onClick={()=>removeExistingVideo(i)}
-                    className="text-red-500">Remove</button>
+              {newImages.map((img, i) => (
+                <div key={i} className="relative">
+                  <img
+                    src={URL.createObjectURL(img)}
+                    className="w-16 h-16 rounded object-cover"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => removeNewImage(i)}
+                    className="absolute -top-2 -right-2 bg-red-500 text-white w-5 h-5 rounded-full text-xs"
+                  >
+                    ✕
+                  </button>
                 </div>
               ))}
-              <input type="file" multiple accept="video/*"
-                onChange={e => setNewVideos([...e.target.files])}/>
             </div>
 
-            {/* ACTIONS */}
-            <div className="flex gap-4">
-              <button type="submit" disabled={saving}
-                className="flex-1 bg-orange-500 text-white py-3 rounded-lg font-semibold">
-                {saving ? "Saving..." : "Save Changes"}
-              </button>
+            <input
+              type="file"
+              multiple
+              accept="image/*"
+              onChange={e => handleNewImages([...e.target.files])}
+            />
+          </div>
 
-              <button type="button"
-                onClick={() => navigate(`/shops/${id}`)}
-                className="flex-1 border border-orange-500 text-orange-500 py-3 rounded-lg font-semibold">
-                Cancel
-              </button>
-            </div>
+          {/* VIDEOS */}
+          <div>
+            <h3 className="font-semibold mb-2">Shop Videos (optional)</h3>
+            {existingVideos.map((_, i) => (
+              <div key={i} className="flex justify-between text-sm mb-1">
+                Existing video {i + 1}
+                <button
+                  type="button"
+                  onClick={() => removeExistingVideo(i)}
+                  className="text-red-500"
+                >
+                  Remove
+                </button>
+              </div>
+            ))}
+            <input
+              type="file"
+              multiple
+              accept="video/*"
+              onChange={e => setNewVideos([...e.target.files])}
+            />
+          </div>
 
-          </form>
-        </div>
+          {/* ACTIONS */}
+          <div className="sticky bottom-0 bg-white py-3 px-2 -mx-6 border-t flex gap-4 md:static md:border-0 md:px-0">
+            <button
+              type="submit"
+              disabled={saving}
+              className="flex-1 bg-orange-500 text-white py-3 rounded-lg font-semibold"
+            >
+              {saving ? "Saving..." : "Save Changes"}
+            </button>
+
+            <button
+              type="button"
+              onClick={() => navigate(`/shops/${id}`)}
+              className="flex-1 border border-orange-500 text-orange-500 py-3 rounded-lg font-semibold"
+            >
+              Cancel
+            </button>
+          </div>
+
+        </form>
       </div>
-    </>
-  );
+    </div>
+  </>
+);
 }
