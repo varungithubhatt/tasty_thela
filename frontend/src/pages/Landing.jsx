@@ -22,7 +22,7 @@ export default function Landing() {
             </h1>
 
             <p className="text-lg text-gray-600 max-w-xl mx-auto lg:mx-0">
-              Tasty Thela helps you find trusted street food vendors nearby,
+              LocalBite helps you find trusted street food vendors nearby,
               explore their famous dishes, ratings, photos, and locations —
               all in one place.
             </p>
@@ -56,10 +56,10 @@ export default function Landing() {
       <section id="what" className="py-20 bg-white">
         <div className="max-w-4xl mx-auto text-center px-6">
           <h2 className="text-3xl font-bold mb-4">
-            What is Tasty Thela?
+            What is LocalBite?
           </h2>
           <p className="text-gray-600 text-lg">
-            Tasty Thela is a platform that connects food lovers with
+            LocalBite is a platform that connects food lovers with
             street food vendors by showing authentic reviews, ratings,
             menus, photos, and real-time locations.
           </p>

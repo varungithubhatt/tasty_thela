@@ -228,7 +228,7 @@ export default function EditShopPage() {
   }
 
   /* ================= UI ================= */
-  return (
+ return (
   <>
     <AppNavbar />
 
@@ -480,4 +480,5 @@ export default function EditShopPage() {
     </div>
   </>
 );
+
 }

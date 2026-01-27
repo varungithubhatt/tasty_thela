@@ -25,7 +25,7 @@ export default function Navbar() {
             text-[color:var(--color-primary)]
           "
         >
-          Tasty Thela <img src="/thela_image-removebg-preview (1).png" alt="logo" className="inline w-8 h-8 ml-1 -mt-1"/>
+          Local<span className="bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent">Bite</span><img src="/thela_image-removebg-preview (1).png" alt="logo" className="inline w-8 h-8 ml-1 -mt-1"/>
         </Link>
 
         {/* RIGHT: LINKS + LOGIN */}
@@ -36,13 +36,13 @@ export default function Navbar() {
               href="#what"
               className="hover:text-[color:var(--color-primary)] transition"
             >
-              What is Tasty Thela?
+              What is LocalBite?
             </a>
             <a
               href="#why"
               className="hover:text-[color:var(--color-primary)] transition"
             >
-              Why Tasty Thela?
+              Why LocalBite?
             </a>
           </div>
 

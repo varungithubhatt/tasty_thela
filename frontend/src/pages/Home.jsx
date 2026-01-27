@@ -9,12 +9,12 @@ export default function Home() {
 
   const navigate = useNavigate();
 
-  /* ---------------- SEARCH STATE (NEW) ---------------- */
+  
   const [query, setQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
 
-  /* ---------------- PERSISTED STATE ---------------- */
+ 
   const [radius, setRadius] = useState(() => {
     return Number(localStorage.getItem("home_radius")) || 10;
   });
@@ -31,7 +31,7 @@ export default function Home() {
 
   const [loading, setLoading] = useState(false);
 
-  /* ---------------- SAVE STATE ---------------- */
+ 
   useEffect(() => {
     localStorage.setItem("home_radius", radius);
   }, [radius]);
@@ -200,7 +200,7 @@ export default function Home() {
         {/* RECOMMENDED */}
         <section className="max-w-7xl mx-auto mt-8">
           <h2 className="text-xl font-bold mb-4">
-            Recommended Thelas Near You
+            Recommended Carts (Vendors) Near You
           </h2>
 
           {loading && (
