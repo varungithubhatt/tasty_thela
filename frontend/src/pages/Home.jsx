@@ -156,12 +156,31 @@ useEffect(() => {
         {/* TOP SECTION */}
         <div className="max-w-7xl mx-auto flex flex-col gap-4">
           {/* LOCATION */}
-          <div 
-          onClick={updateLocation}
-          className="flex items-center gap-2 text-sm bg-white px-4 py-2 rounded-full w-fit shadow-sm cursor-pointer">
+          
+          <button
+            onClick={updateLocation}
+            disabled={updatingLocation}
+            className="relative overflow-hidden flex items-center gap-2 text-sm bg-white px-4 py-2 rounded-full w-fit shadow-sm cursor-pointer hover:bg-green-50 transition"
+          >
             📍 Near You
-            <span className="text-green-500 text-xs ml-2">● Live GPS</span>
-          </div>
+
+            <span className="text-green-500 text-xs ml-2">
+              ● {updatingLocation ? "Updating..." : "Live GPS"}
+            </span>
+
+            {/* animated glow */}
+            {updatingLocation && (
+              <span
+                className="absolute inset-0 rounded-full pointer-events-none"
+                style={{
+                  border: "2px solid #22c55e",
+                  animation: "gpsRing 5s ease-out infinite"
+                }}
+              />
+            )}
+
+          </button>
+
 
           {/* SEARCH BAR (UPGRADED) */}
           <div className="relative max-w-xl">
