@@ -30,6 +30,34 @@ export default function Home() {
   });
 
   const [loading, setLoading] = useState(false);
+  const [updatingLocation, setUpdatingLocation] = useState(false);
+  
+  const updateLocation = () => {
+  if (!navigator.geolocation) return;
+
+  setUpdatingLocation(true);
+
+  navigator.geolocation.getCurrentPosition(
+    (pos) => {
+      const newLoc = {
+        lat: pos.coords.latitude,
+        lng: pos.coords.longitude,
+      };
+
+      console.log("📍 Updated location:", newLoc);
+      setLocation(newLoc);
+      setUpdatingLocation(false);
+    },
+    () => {
+      console.error("Location permission denied");
+      setUpdatingLocation(false);
+    },
+    {
+      enableHighAccuracy: true,
+    }
+  );
+};
+
 
  
   useEffect(() => {
@@ -48,24 +76,13 @@ export default function Home() {
     }
   }, [location]);
 
-  /* ---------------- GET USER LOCATION ---------------- */
-  useEffect(() => {
-    if (location) return;
+ 
+  /* ---------------- GET USER LOCATION ON LOAD ---------------- */
+useEffect(() => {
+  updateLocation();
+}, []);
+   // run once on mount
 
-    if (!navigator.geolocation) return;
-
-    navigator.geolocation.getCurrentPosition(
-      (pos) => {
-        setLocation({
-          lat: pos.coords.latitude,
-          lng: pos.coords.longitude
-        });
-      },
-      () => {
-        console.error("Location permission denied");
-      }
-    );
-  }, [location]);
 
   /* ---------------- FETCH SHOPS BY RADIUS ---------------- */
   useEffect(() => {
@@ -139,7 +156,9 @@ export default function Home() {
         {/* TOP SECTION */}
         <div className="max-w-7xl mx-auto flex flex-col gap-4">
           {/* LOCATION */}
-          <div className="flex items-center gap-2 text-sm bg-white px-4 py-2 rounded-full w-fit shadow-sm">
+          <div 
+          onClick={updateLocation}
+          className="flex items-center gap-2 text-sm bg-white px-4 py-2 rounded-full w-fit shadow-sm cursor-pointer">
             📍 Near You
             <span className="text-green-500 text-xs ml-2">● Live GPS</span>
           </div>
