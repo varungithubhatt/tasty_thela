@@ -52,7 +52,7 @@ export default function Navbar() {
             className="
               px-4 py-2
               rounded-full text-sm font-semibold
-              bg-[color:var(--color-primary)] text-white
+              bg-orange-400 text-white
               hover:opacity-90 transition
             "
           >

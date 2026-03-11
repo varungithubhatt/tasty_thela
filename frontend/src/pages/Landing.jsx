@@ -31,7 +31,7 @@ export default function Landing() {
               <Link
                 to="/home"
                 className="px-8 py-4 rounded-full text-lg font-semibold
-                           bg-[color:var(--color-primary)] text-white
+                           bg-orange-400 text-white
                            shadow-lg hover:scale-105 transition-transform"
               >
                 Get Started 🚀

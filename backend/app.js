@@ -6,6 +6,7 @@ import shopRoutes from "./routes/shop.routes.js";
 import reviewRoutes from "./routes/reviews.routes.js";
 import favouriteRoutes from "./routes/favourite.routes.js";
 import exploreRoutes from "./routes/explore.routes.js";
+import aiChat from "./routes/aiChat.js";
 const app = express();
 
 const allowedOrigins = [
@@ -36,4 +37,5 @@ app.use("/shops", shopRoutes);
 app.use("/reviews", reviewRoutes);
 app.use("/favourites", favouriteRoutes);
 app.use("/explore", exploreRoutes);
+app.use("/ai", aiChat);
 export default app;

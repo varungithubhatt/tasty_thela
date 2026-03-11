@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import AppNavbar from "../components/AppNavbar";
 import ShopCard from "../components/ShopCard";
 import api from "../services/api";
-
+import AIChatbot from "../components/AIChatbot";
 export default function Home() {
   console.log("home component is running");
 
@@ -260,6 +260,7 @@ useEffect(() => {
           </div>
         </section>
       </main>
+      <AIChatbot />
     </div>
   );
 }
