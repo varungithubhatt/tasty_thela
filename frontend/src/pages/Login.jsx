@@ -110,7 +110,7 @@ const handleSkip = () => {
           <button
             disabled={loading}
             className="w-full py-3 rounded-lg font-semibold text-white
-                       bg-[color:var(--color-primary)]
+                        bg-orange-500 hover:bg-orange-600 transition-colors
                        hover:opacity-90 transition
                        disabled:opacity-60"
           >

@@ -80,7 +80,7 @@ export default function Signup() {
           <button
             disabled={loading}
             className="w-full py-3 rounded-lg font-semibold text-white
-                       bg-[color:var(--color-primary)]
+                       bg-orange-500 hover:bg-orange-600 transition-colors
                        disabled:opacity-60"
           >
             {loading ? "Creating..." : "Sign Up"}

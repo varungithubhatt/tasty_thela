@@ -45,7 +45,7 @@ export default function AIChatbot() {
 
       {/* CHAT WINDOW */}
       {open && (
-        <div className="fixed bottom-20 right-6 w-[380px] h-200 bg-white rounded-2xl shadow-2xl flex flex-col border border-gray-200 overflow-hidden">
+        <div className="fixed bottom-20 right-6 w-[380px] h-180 bg-white rounded-2xl shadow-2xl flex flex-col border border-gray-200 overflow-hidden">
 
           {/* HEADER */}
           <div className="flex items-center justify-between px-4 py-3 bg-gradient-to-r from-orange-500 to-red-500 text-white font-semibold">
